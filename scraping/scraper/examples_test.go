@@ -22,7 +22,7 @@ func ExamplePokemonList_Add() {
 func ExampleScrape() {
 	p := scraper.Scrape(1)
 	fmt.Println(p)
-	// Output: [Pikachu Bulbasaur Charmander Squirtle Caterpie Weedle Pidgey Rattata Spearow Ekans Pikachu]
+	// Output: [Bulbasaur IvySaur Venusaur Charmander Charmeleon Charizard Squirtle Wartortle Blastoise Caterpie Metapod Butterfree Weedle Kakuna Beedrill Pidgey]
 }
 
 func ExamplePokemonList_Print() {
