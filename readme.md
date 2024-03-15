@@ -1,10 +1,10 @@
 # extra practice with concurrency
 
-### ./mutexes
+### /mutexes
 - using a counter map and mutex to "safely" increment a counter
 
-### ./channels
+### /channels
 - using channels to pass data between go routines
 
-### ./scraping
+### /scraping
 - testing how to use go to scrape a website concurrently

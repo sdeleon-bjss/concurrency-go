@@ -31,7 +31,6 @@ func (w *worker) Close() {
 var wg sync.WaitGroup
 
 func main() {
-	// instantiates the worker
 	w := worker{
 		numbersChannel: make(chan int),
 	}
