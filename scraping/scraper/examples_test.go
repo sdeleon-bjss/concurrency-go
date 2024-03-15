@@ -1,5 +1,7 @@
 package scraper_test
 
+// Notes - this file is testing how to use Examples in godoc
+
 import (
 	"fmt"
 	"github.com/sdeleon-bjss/scraping/scraper"
