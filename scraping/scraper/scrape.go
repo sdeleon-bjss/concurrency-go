@@ -1,6 +1,3 @@
-// This package demonstrates scraping and go docs (synopsis test)
-//
-// The scraper package is used to scrape a website for Pokemon data
 package scraper
 
 import (
@@ -12,26 +9,21 @@ import (
 	"time"
 )
 
-// baseUrl represents the base url for the website to scrape
 const baseUrl = "https://scrapeme.live/shop"
 
-// Pokemon represents a Pokemon entity
 type Pokemon struct {
 	Name string
 }
 
-// Set method sets the name of the Pokemon
 func (p *Pokemon) Set(Name string) {
 	p.Name = Name
 }
 
-// PokemonList represents a list of Pokemon and a mutex to lock the list
 type PokemonList struct {
 	mu      sync.Mutex
 	pokemon []Pokemon
 }
 
-// Add method adds a Pokemon to the list
 func (pm *PokemonList) Add(p Pokemon) {
 	pm.mu.Lock()
 	defer pm.mu.Unlock()
@@ -39,7 +31,6 @@ func (pm *PokemonList) Add(p Pokemon) {
 	pm.pokemon = append(pm.pokemon, p)
 }
 
-// Print method prints the list of Pokemon
 func (pm *PokemonList) Print() {
 	pm.mu.Lock()
 	defer pm.mu.Unlock()
@@ -49,11 +40,6 @@ func (pm *PokemonList) Print() {
 	}
 }
 
-// Scrape function scrapes the website for Pokemon data
-//
-// ...multi line comment testing...
-//
-// - It takes an integer as an argument, representing the page number to scrape
 func Scrape(i int) []string {
 	var currentUrl string
 
@@ -104,4 +90,3 @@ func Scrape(i int) []string {
 // - waitgroups to wait for all goroutines to finish
 // - a struct to store the data, with methods to add and print the data
 // - abstracted the scraping logic into a function for a cleaner main
-// godoc for documenting the code

@@ -10,7 +10,6 @@ var (
 	data = scraper.PokemonList{}
 )
 
-// main function to start the program
 func main() {
 	println("Beginning scraper...")
 

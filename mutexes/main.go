@@ -12,27 +12,33 @@ import (
 
 type counter struct {
 	numberMap map[string]int
-	mu        sync.Mutex
+	mutex     sync.Mutex
 }
 
-func (c *counter) add(num int) {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	c.numberMap["key"] = num
+func (c *counter) add(key string, num int) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	c.numberMap[key] = num
 }
+
+var wg sync.WaitGroup
 
 func main() {
-	c := counter{numberMap: make(map[string]int)}
-	var wg sync.WaitGroup
+	c := counter{
+		numberMap: make(map[string]int),
+	}
 
 	for i := 0; i < 1000; i++ {
 		wg.Add(1)
 		go func(i int) {
 			defer wg.Done()
-			c.add(i)
+			key := fmt.Sprintf("key%d", i)
+			c.add(key, i)
 		}(i)
 	}
-
 	wg.Wait()
-	fmt.Printf("%d\n", c.numberMap["key"])
+
+	for key, num := range c.numberMap {
+		fmt.Printf("Key: %s, Value: %d\n", key, num)
+	}
 }
